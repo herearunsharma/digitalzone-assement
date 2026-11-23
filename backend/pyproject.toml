@@ -1,0 +1,26 @@
+[project]
+name = "campaign-data-hub"
+version = "0.1.0"
+description = "Normalizes weekly ad-platform deliveries and grades their quality."
+requires-python = ">=3.12"
+
+# Deliberately small. No pandas/polars: every transformation in this project is a
+# handful of explicit lines over stdlib csv/json. A DataFrame would hide the exact
+# coercion rules behind library semantics, and those rules are the thing under
+# assessment. ~400 rows needs no vectorisation.
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "sqlalchemy>=2.0",
+    "pydantic>=2.9",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "httpx>=0.27",          # required by fastapi.testclient
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

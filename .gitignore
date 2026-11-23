@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Build artefact of `python -m app.cli`; a committed copy would mask a broken
+# pipeline.
+backend/campaign_hub.db
+backend/campaign_hub.db-wal
+backend/campaign_hub.db-shm
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# OS
+.DS_Store
